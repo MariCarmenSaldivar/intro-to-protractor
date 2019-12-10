@@ -8,7 +8,7 @@ module.exports = function(grunt) {
 		clientViews: ['public/modules/**/views/*.html'],
 		clientJS: ['public/js/*.js', 'public/modules/**/*.js'],
 		clientCSS: ['public/modules/**/*.css'],
-		mochaTests: ['app/tests/**/*.js']
+		//mochaTests: ['app/tests/**/*.js']
 	};
 
 	// Project Configuration
@@ -21,13 +21,13 @@ module.exports = function(grunt) {
 					livereload: true
 				}
 			},
-			serverJS: {
-				files: watchFiles.serverJS.concat(watchFiles.mochaTests),
-				tasks: ['jshint', 'mochaTest'],
-				options: {
-					livereload: true
-				}
-			},
+			//serverJS: {
+			//	files: watchFiles.serverJS.concat(watchFiles.mochaTests),
+			//	tasks: ['jshint', 'mochaTest'],
+			//	options: {
+			//		livereload: true
+			//	}
+			//},
 			clientViews: {
 				files: watchFiles.clientViews,
 				options: {
@@ -169,5 +169,5 @@ module.exports = function(grunt) {
 	grunt.registerTask('demoTest', ['env:test', 'concurrent:test']);
 
 	// Test task.
-	grunt.registerTask('test', ['env:test', 'mochaTest', 'karma:unit']);
+	//grunt.registerTask('test', ['env:test', 'mochaTest', 'karma:unit']);
 };
