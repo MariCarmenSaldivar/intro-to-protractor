@@ -64,13 +64,6 @@
             }
         },
         {
-            "type": "Microsoft.Web/sites/slots",
-            "apiVersion": "2018-02-01",
-            "name": "[concat(parameters('appServiceName'), '/staging')]",
-            "location": "East US",
-            "kind": "app"
-        },
-        {
             "apiVersion": "2018-11-01",
             "name": "[parameters('appServiceName')]",
             "type": "Microsoft.Web/sites",
@@ -138,6 +131,16 @@
                 "serverFarmId": "[concat('/subscriptions/', parameters('subscriptionId'),'/resourcegroups/', parameters('appServiceName'), '/providers/Microsoft.Web/serverfarms/', parameters('planServiceName'))]",
                 "hostingEnvironment": "[parameters('hostingEnvironment')]",
                 "clientAffinityEnabled": true
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/slots",
+            "apiVersion": "2018-02-01",
+            "name": "[concat(parameters('appServiceName'), '/staging')]",
+            "location": "[parameters('location')]",
+            "kind": "app",
+            "properties": {
+                "serverFarmId":"[resourceId('Microsoft.Web/serverfarms', parameters('planServiceName'))]"
             }
         }
     ]
