@@ -45,13 +45,13 @@
     "resources": [
         {
             "apiVersion": "2018-11-01",
-            "name": "[parameters('PlanServicename')]",
+            "name": "[parameters('planServiceName')]",
             "type": "Microsoft.Web/serverfarms",
             "location": "[parameters('location')]",
             "kind": "",
             "tags": {},
             "properties": {
-                "name": "[parameters('PlanServicename')]",
+                "name": "[parameters('planServiceName')]",
                 "workerSize": "[parameters('workerSize')]",
                 "workerSizeId": "[parameters('workerSizeId')]",
                 "numberOfWorkers": "[parameters('numberOfWorkers')]",
@@ -78,7 +78,7 @@
             "kind": "app",
             "tags": null,
             "dependsOn": [
-                "[resourceId('Microsoft.Web/serverfarms', parameters('PlanServicename'))]",
+                "[resourceId('Microsoft.Web/serverfarms', parameters('planServiceName'))]",
                 "[resourceId('Microsoft.Web/sites/slots', parameters('appServiceName'), 'staging')]"
             ],
             "properties": {
@@ -135,7 +135,7 @@
                     "nodeVersion": "[parameters('nodeVersion')]",
                     "alwaysOn": "[parameters('alwaysOn')]"
                 },
-                "serverFarmId": "[concat('/subscriptions/', parameters('subscriptionId'),'/resourcegroups/', parameters('appServiceName'), '/providers/Microsoft.Web/serverfarms/', parameters('PlanServicename'))]",
+                "serverFarmId": "[concat('/subscriptions/', parameters('subscriptionId'),'/resourcegroups/', parameters('appServiceName'), '/providers/Microsoft.Web/serverfarms/', parameters('planServiceName'))]",
                 "hostingEnvironment": "[parameters('hostingEnvironment')]",
                 "clientAffinityEnabled": true
             }

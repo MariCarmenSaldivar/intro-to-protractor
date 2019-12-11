@@ -5,7 +5,7 @@
         "subscriptionId": {
             "value": "83f6614d-e618-4d1e-958f-2732e1e72ea5"
         },
-        "PlanServicename": {
+        "planServiceName": {
             "value": "paasapps"
         },
         "appServiceName": {
