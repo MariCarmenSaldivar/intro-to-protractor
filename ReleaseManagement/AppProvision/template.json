@@ -46,6 +46,13 @@
         }
     },
     "resources": [
+         {
+            "type": "Microsoft.Resources/resourceGroups",
+            "apiVersion": "2018-05-01",
+            "location": "[parameters('location')]",
+            "name": "[parameters('serverFarmResourceGroup')]",
+            "properties": {}
+        },
         {
             "apiVersion": "2018-11-01",
             "name": "[parameters('planServiceName')]",
@@ -53,6 +60,9 @@
             "location": "[parameters('location')]",
             "kind": "",
             "tags": {},
+             "dependsOn": [
+                "[resourceId('Microsoft.Resources/resourceGroups/', parameters('serverFarmResourceGroup'))]"
+            ],
             "properties": {
                 "name": "[parameters('planServiceName')]",
                 "workerSize": "[parameters('workerSize')]",
@@ -72,8 +82,9 @@
             "type": "Microsoft.Web/sites",
             "location": "[parameters('location')]",
             "kind": "app",
-            "tags": null,
+            "tags": {},
             "dependsOn": [
+                "microsoft.insights/components/labangular",
                 "[resourceId('Microsoft.Web/serverfarms', parameters('planServiceName'))]",
                 "[resourceId('Microsoft.Web/sites/slots', parameters('appServiceName'), 'staging')]"
             ],
@@ -134,6 +145,17 @@
                 "serverFarmId": "[concat('/subscriptions/', parameters('subscriptionId'),'/resourcegroups/', parameters('serverFarmResourceGroup'), '/providers/Microsoft.Web/serverfarms/', parameters('planServiceName'))]",
                 "hostingEnvironment": "[parameters('hostingEnvironment')]",
                 "clientAffinityEnabled": true
+            }
+        },
+        {
+            "apiVersion": "2015-05-01",
+            "name": "[parameters('appServiceName')]",
+            "type": "microsoft.insights/components",
+            "location": "[parameters('location')]",
+            "tags": {},
+            "properties": {
+                "ApplicationId": "[parameters('appServiceName')]",
+                "Request_Source": "IbizaWebAppExtensionCreate"
             }
         },
         {
