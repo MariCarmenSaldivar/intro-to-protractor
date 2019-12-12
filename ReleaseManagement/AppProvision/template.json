@@ -60,9 +60,6 @@
             "location": "[parameters('location')]",
             "kind": "",
             "tags": {},
-             "dependsOn": [
-                "[resourceId('Microsoft.Resources/resourceGroups/', parameters('serverFarmResourceGroup'))]"
-            ],
             "properties": {
                 "name": "[parameters('planServiceName')]",
                 "workerSize": "[parameters('workerSize')]",
