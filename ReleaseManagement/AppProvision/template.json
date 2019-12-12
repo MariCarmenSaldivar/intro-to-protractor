@@ -48,7 +48,7 @@
     "resources": [
          {
             "type": "Microsoft.Resources/resourceGroups",
-            "apiVersion": "2018-05-01",
+            "apiVersion": "2018-11-01",
             "location": "[parameters('location')]",
             "name": "[parameters('serverFarmResourceGroup')]",
             "properties": {}
