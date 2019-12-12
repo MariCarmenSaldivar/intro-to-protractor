@@ -8,9 +8,12 @@
     "npm": "1.4.x"
   },
   "scripts": {
-    "start": "grunt",
-    "test": "grunt test",
-    "postinstall": "bower install --config.interactive=false"
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build --prod",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
