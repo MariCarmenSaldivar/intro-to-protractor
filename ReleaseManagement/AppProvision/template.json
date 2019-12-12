@@ -152,6 +152,9 @@
             "name": "[concat(parameters('appServiceName'), '/staging')]",
             "location": "[parameters('location')]",
             "kind": "app",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('appServiceName'))]"
+            ],
             "properties": {
                 "serverFarmId":"[resourceId('Microsoft.Web/serverfarms', parameters('planServiceName'))]"
             }
