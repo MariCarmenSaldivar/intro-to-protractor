@@ -46,13 +46,6 @@
         }
     },
     "resources": [
-         {
-            "type": "Microsoft.Resources/resourceGroups",
-            "apiVersion": "2018-11-01",
-            "location": "[parameters('location')]",
-            "name": "[parameters('serverFarmResourceGroup')]",
-            "properties": {}
-        },
         {
             "apiVersion": "2018-11-01",
             "name": "[parameters('planServiceName')]",
@@ -81,9 +74,7 @@
             "kind": "app",
             "tags": {},
             "dependsOn": [
-                "microsoft.insights/components/labangular",
-                "[resourceId('Microsoft.Web/serverfarms', parameters('planServiceName'))]",
-                "[resourceId('Microsoft.Web/sites/slots', parameters('appServiceName'), 'staging')]"
+                "[resourceId('Microsoft.Web/serverfarms', parameters('planServiceName'))]"
             ],
             "properties": {
                 "name": "[parameters('appServiceName')]",
